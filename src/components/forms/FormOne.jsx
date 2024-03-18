@@ -21,8 +21,13 @@ const FormOne = ({setApiResponse}) => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        getAllCourses();
-    }, []);
+        if (typeSelect === "course") {
+            getAllCourses();
+        }else if (typeSelect === "testSeries") {
+            getTestSeries();
+        }
+       
+    }, [typeSelect]);
 
     const handleChangeCourse = (e) => {
         setCourse(e.target.value)
@@ -37,6 +42,16 @@ const FormOne = ({setApiResponse}) => {
             }
         })
         setCoursesData(templist);
+    };
+    const getTestSeries = async () => {
+        const response = await CourseNetwrok.fetchTestSeries(instId);
+        let templist = [];
+        response.testSeriesList.forEach((course) => {
+            if (course.active == true) {
+                templist.push(course);
+            }
+        })
+        setCoursesData(response?.testSeriesList);
     };
 
     const handleSubmit = async () => {
@@ -71,10 +86,10 @@ const FormOne = ({setApiResponse}) => {
 
     return (
         <React.Fragment>
-            <Grid container sx={{ display: "flex", justifyContent: "center", height: '100vh' }}>
-                <Grid xs={12} sm={8} md={6} lg={4} paddingLeft={"0px"} mt={['30px']}>
-                    <Card sx={{boxShadow: "none"}}>
-                        <CardContent sx={{ p: [2, 5] }}>
+            <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+                <Grid xs={12} sm={8} md={6} lg={4} padding={"0px"}>
+                    <Card sx={{boxShadow: "none", height: "100%"}}>
+                        <CardContent sx={{ p: [0, 0] }}>
                             <Typography
                                 sx={{
                                     display: 'flex',
@@ -82,7 +97,7 @@ const FormOne = ({setApiResponse}) => {
                                     alignItems: 'center'
                                 }}
                                 fontFamily={'Inter , sans-serif'}
-                                fontSize={['40px', '46px']}
+                                fontSize={['35px', '40px']}
                                 fontWeight={'500'}
                                 lineHeight={'60px'}
                             >
@@ -152,9 +167,10 @@ const FormOne = ({setApiResponse}) => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12}>
+                                {typeSelect ?  <Grid item xs={12}>
+                                    
                                     <Typography>
-                                        Course :
+                                        {typeSelect === "course" ? "Course :" : "Test Series"}
                                     </Typography>
                                     <FormControl fullWidth>
                                         <Select
@@ -166,7 +182,7 @@ const FormOne = ({setApiResponse}) => {
                                             style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px' }}
                                         >
                                             <MenuItem value="">
-                                                <em>Select Your Course</em>
+                                                <em> {typeSelect === "course" ? "Select Your Course :" : "Select Your Test Series"}</em>
                                             </MenuItem>
                                             {coursesData && coursesData.map((filteredCourse, index) => {
                                                 return (
@@ -176,13 +192,14 @@ const FormOne = ({setApiResponse}) => {
                                                             margin: '10px'
                                                         }}
                                                     >
-                                                        {filteredCourse.title}
+                                                        {filteredCourse?.title ? filteredCourse?.title : filteredCourse?.name}
                                                     </MenuItem>
                                                 )
                                             })}
                                         </Select>
                                     </FormControl>
-                                </Grid>
+                                </Grid> : "" }
+                              
 
                             </Grid>
                             <Grid container spacing={2} mt={2}>

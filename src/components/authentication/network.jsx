@@ -3,6 +3,7 @@ import { BASE_URL } from "./BaseUrl";
 
 export default class CourseNetwrok {
     static COURSES_URL = BASE_URL + "admin/course/fetch-public/";
+    static TEST_SERIES_URL = BASE_URL + "/admin/quiz/test-series/fetch-public/";
     static INSTITUTE_URL = BASE_URL + "getMetaData/fetch-institute/";
     static FORM_SUBMIT_URL = BASE_URL + "/leadManagement/create-lead-form";
 
@@ -11,6 +12,13 @@ export default class CourseNetwrok {
             withCredentials: false,
         };
         const response = await axios.get(this.COURSES_URL + instId, requestOptions);
+        return response.data;
+    }
+    static async fetchTestSeries(instId) {
+        let requestOptions = {
+            withCredentials: false,
+        };
+        const response = await axios.get(this.TEST_SERIES_URL + instId, requestOptions);
         return response.data;
     }
     static async fetchInstitute(instId) {

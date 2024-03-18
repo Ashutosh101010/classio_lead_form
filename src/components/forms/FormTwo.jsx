@@ -21,8 +21,13 @@ const FormTwo = ({setApiResponse}) => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        getAllCourses();
-    }, []);
+        if (typeSelect === "course") {
+            getAllCourses();
+        }else if (typeSelect === "testSeries") {
+            getTestSeries();
+        }
+       
+    }, [typeSelect]);
 
     const handleChangeCourse = (e) => {
         setCourse(e.target.value)
@@ -37,6 +42,17 @@ const FormTwo = ({setApiResponse}) => {
             }
         })
         setCoursesData(templist);
+    };
+
+    const getTestSeries = async () => {
+        const response = await CourseNetwrok.fetchTestSeries(instId);
+        let templist = [];
+        response.testSeriesList.forEach((course) => {
+            if (course.active == true) {
+                templist.push(course);
+            }
+        })
+        setCoursesData(response?.testSeriesList);
     };
 
     const handleSubmit = async () => {
@@ -71,10 +87,10 @@ const FormTwo = ({setApiResponse}) => {
 
     return (
         <React.Fragment>
-            <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100vh' }}>
+            <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <Grid xs={12} sm={8} md={6} lg={3}>
                     <form>
-                        <Card sx={{boxShadow: "none"}}>
+                        <Card sx={{boxShadow: "none", height: "100%"}}>
                             <CardContent sx={{ padding: 0 }}>
                                 <Box sx={{ textAlign: "center", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", background: "#efa902", color: "#fff", padding: "15px" }}>
                                     <Typography variant="h5" sx={{ mb: 1 }}>
@@ -145,30 +161,32 @@ const FormTwo = ({setApiResponse}) => {
                                             <MenuItem value="testSeries">Test-series</MenuItem>
                                         </Select>
                                     </FormControl>
-                                    <FormControl fullWidth sx={{ my: 2 }}>
-                                        <InputLabel id="demo-simple-select-label">Course</InputLabel>
-                                        <Select
-                                            sx={{ borderRadius: "8px", background: "#f2f2f2" }}
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            label="Course"
-                                            value={course}
-                                            onChange={handleChangeCourse}
-                                        >
-                                            {coursesData && coursesData.map((filteredCourse, index) => {
-                                                return (
-                                                    <MenuItem
-                                                        value={filteredCourse}
-                                                        style={{
-                                                            margin: '10px'
-                                                        }}
-                                                    >
-                                                        {filteredCourse.title}
-                                                    </MenuItem>
-                                                )
-                                            })}
-                                        </Select>
-                                    </FormControl>
+                                    {typeSelect ?  
+                                   <FormControl fullWidth sx={{ my: 2 }}>
+                                   <InputLabel id="demo-simple-select-label">{typeSelect === "course" ? "Course :" : "Test Series"}</InputLabel>
+                                   <Select
+                                       sx={{ borderRadius: "8px", background: "#f2f2f2" }}
+                                       labelId="demo-simple-select-label"
+                                       id="demo-simple-select"
+                                       label={typeSelect === "course" ? "Course :" : "Test Series"}
+                                       value={course}
+                                       onChange={handleChangeCourse}
+                                   >
+                                       {coursesData && coursesData.map((filteredCourse, index) => {
+                                           return (
+                                               <MenuItem
+                                                   value={filteredCourse}
+                                                   style={{
+                                                       margin: '10px'
+                                                   }}
+                                               >
+                                                   {filteredCourse?.title ? filteredCourse?.title : filteredCourse?.name}
+                                               </MenuItem>
+                                           )
+                                       })}
+                                   </Select>
+                               </FormControl> : "" }
+                                    
                                     <p style={{ margin: 0 }}>Message</p>
                                     <TextareaAutosize
                                         maxRows={7}
