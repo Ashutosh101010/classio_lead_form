@@ -24,7 +24,7 @@ const Template = ({ templateId, setFormId }) => {
         }
     };
 
-    switch (2) {
+    switch (templateId) {
         case 1:
             return <>
             {apiResponse === false ? <FormOne setApiResponse={setApiResponse} /> : <ThankYouPage />}
