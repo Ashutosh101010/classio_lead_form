@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CourseNetwrok from "../authentication/network";
 
-const FormOne = () => {
+const FormOne = ({setApiResponse}) => {
 
-    const instId = '49';
     const queryParam = new URLSearchParams(location.search);
+    const instId = queryParam.get("instituteid");
     const campaignId = queryParam.get("campaignid");
+    const metaCampaignId = queryParam.get("campaign_id");
     const mobile = useMediaQuery("(min-width:600px)");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -40,7 +41,6 @@ const FormOne = () => {
 
     const handleSubmit = async () => {
         if (firstName && lastName && number && emailId && typeSelect && course && message) {
-            console.log(firstName, lastName, number, emailId, typeSelect, course, message);
             const body = {
                 "firstName": firstName,
                 "lastName": lastName,
@@ -49,10 +49,11 @@ const FormOne = () => {
                 "enquiryType": typeSelect,
                 "contentId": course.id,
                 "instId": instId,
-                "campaignId": campaignId
+                "campaignId": campaignId ?campaignId : metaCampaignId ? metaCampaignId : null
             }
             const response = await CourseNetwrok.submitForm(body);
             if (response?.errorCode === 0) {
+                setApiResponse(true);
                 setFirstName("");
                 setLastName("");
                 setNumber("");
@@ -70,9 +71,9 @@ const FormOne = () => {
 
     return (
         <React.Fragment>
-            <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+            <Grid container sx={{ display: "flex", justifyContent: "center", height: '100vh' }}>
                 <Grid xs={12} sm={8} md={6} lg={4} paddingLeft={"0px"} mt={['30px']}>
-                    <Card>
+                    <Card sx={{boxShadow: "none"}}>
                         <CardContent sx={{ p: [2, 5] }}>
                             <Typography
                                 sx={{

@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FormOne from "./FormOne";
 import FormTwo from "./FormTwo";
 import CourseNetwrok from "../authentication/network";
+import ThankYouPage from "./ThankYouPage";
 
 
 const Template = ({ templateId, setFormId }) => {
 
-    const instId = '94';
+    const queryParam = new URLSearchParams(location.search);
+    const instId = queryParam.get("instituteid");
+    const [apiResponse, setApiResponse] = useState(false)
 
     useEffect(() => {
         getInstitute();
@@ -23,11 +26,17 @@ const Template = ({ templateId, setFormId }) => {
 
     switch (templateId) {
         case 1:
-            return <FormOne />;
+            return <>
+            {apiResponse === false ? <FormOne setApiResponse={setApiResponse} /> : <ThankYouPage />}
+            </>;
         case 2:
-            return <FormTwo />;
+            return <>
+            {apiResponse === false ? <FormTwo setApiResponse={setApiResponse} /> : <ThankYouPage />}
+            </>;
         default:
-            return <FormOne />;
+            return <>
+            {apiResponse === false ? <FormOne setApiResponse={setApiResponse} /> : <ThankYouPage />}
+            </>;
     }
 
 };

@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CourseNetwrok from "../authentication/network";
 
-const FormTwo = () => {
+const FormTwo = ({setApiResponse}) => {
 
-    const instId = '94';
     const queryParam = new URLSearchParams(location.search);
+    const instId = queryParam.get("instituteid");
     const campaignId = queryParam.get("campaignid");
+    const metaCampaignId = queryParam.get("campaign_id");
     const mobile = useMediaQuery("(min-width:600px)");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -40,7 +41,6 @@ const FormTwo = () => {
 
     const handleSubmit = async () => {
         if (firstName && lastName && number && emailId && typeSelect && course && message) {
-            console.log(firstName, lastName, number, emailId, typeSelect, course, message);
             const body = {
                 "firstName": firstName,
                 "lastName": lastName,
@@ -49,10 +49,11 @@ const FormTwo = () => {
                 "enquiryType": typeSelect,
                 "contentId": course.id,
                 "instId": instId,
-                "campaignId": campaignId
+                "campaignId": campaignId ?campaignId : metaCampaignId ? metaCampaignId : null
             }
             const response = await CourseNetwrok.submitForm(body);
             if (response?.errorCode === 0) {
+                setApiResponse(true);
                 setFirstName("");
                 setLastName("");
                 setNumber("");
@@ -60,7 +61,7 @@ const FormTwo = () => {
                 setTypeSelect("");
                 setCourse("");
                 setMessage("");
-                setError("")
+                setError("");
             }
         }
         else {
@@ -70,10 +71,10 @@ const FormTwo = () => {
 
     return (
         <React.Fragment>
-            <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: '98vh' }}>
+            <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100vh' }}>
                 <Grid xs={12} sm={8} md={6} lg={3}>
                     <form>
-                        <Card>
+                        <Card sx={{boxShadow: "none"}}>
                             <CardContent sx={{ padding: 0 }}>
                                 <Box sx={{ textAlign: "center", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", background: "#efa902", color: "#fff", padding: "15px" }}>
                                     <Typography variant="h5" sx={{ mb: 1 }}>
