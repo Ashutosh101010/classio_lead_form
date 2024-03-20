@@ -91,7 +91,7 @@ const FormTwo = ({setApiResponse}) => {
                 <Grid xs={12} sm={8} md={6} lg={3}>
                     <form>
                         <Card sx={{boxShadow: "none", height: "100%"}}>
-                            <CardContent sx={{ padding: 0 }}>
+                            <CardContent sx={{ p: [1, 2] }}>
                                 <Box sx={{ textAlign: "center", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", background: "#efa902", color: "#fff", padding: "15px" }}>
                                     <Typography variant="h5" sx={{ mb: 1 }}>
                                         Submit form for  Get In Touch
