@@ -89,7 +89,7 @@ const FormOne = ({setApiResponse}) => {
             <Grid container sx={{ display: "flex", justifyContent: "center", }}>
                 <Grid xs={12} sm={8} md={6} lg={4} padding={"0px"}>
                     <Card sx={{boxShadow: "none", height: "100%"}}>
-                        <CardContent sx={{ p: [1, 2] }}>
+                        <CardContent sx={{ p: [0, 2] }}>
                             <Typography
                                 sx={{
                                     display: 'flex',
