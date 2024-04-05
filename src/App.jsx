@@ -4,11 +4,11 @@ import Template from './components/forms';
 
 function App() {
 
- const [formId , setFormId]= useState(0)
+  const [formId, setFormId] = useState(0)
 
   return (
     <>
-   <Template templateId={formId} setFormId={setFormId} />
+      <Template templateId={formId} setFormId={setFormId} />
     </>
   )
 }
