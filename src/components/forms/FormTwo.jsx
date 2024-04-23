@@ -94,7 +94,7 @@ const FormTwo = ({setApiResponse}) => {
                             <CardContent sx={{ p: [1, 2] }}>
                                 <Box sx={{ textAlign: "center", borderTopLeftRadius: "10px", borderTopRightRadius: "10px", background: "#efa902", color: "#fff", padding: "15px" }}>
                                     <Typography variant="h5" sx={{ mb: 1 }}>
-                                        Submit form for  Get In Touch
+                                        Submit  for  Get In Touch
                                     </Typography>
                                     <Typography>
                                         We'd love to hear from you, please drop us a line if you've any
@@ -228,7 +228,7 @@ const FormTwo = ({setApiResponse}) => {
                                     }}
                                     onClick={handleSubmit}
                                 >
-                                    Send Message
+                                    Submit 
                                 </Button>
                             </CardActions>
 

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CourseNetwrok from "../authentication/network";
 
-const FormOne = ({setApiResponse}) => {
+const FormOne = ({ setApiResponse }) => {
 
     const queryParam = new URLSearchParams(location.search);
     const instId = queryParam.get("instituteid");
@@ -23,10 +23,10 @@ const FormOne = ({setApiResponse}) => {
     useEffect(() => {
         if (typeSelect === "course") {
             getAllCourses();
-        }else if (typeSelect === "testSeries") {
+        } else if (typeSelect === "testSeries") {
             getTestSeries();
         }
-       
+
     }, [typeSelect]);
 
     const handleChangeCourse = (e) => {
@@ -64,7 +64,7 @@ const FormOne = ({setApiResponse}) => {
                 "enquiryType": typeSelect,
                 "contentId": course.id,
                 "instId": instId,
-                "campaignId": campaignId ?campaignId : metaCampaignId ? metaCampaignId : null
+                "campaignId": campaignId ? campaignId : metaCampaignId ? metaCampaignId : null
             }
             const response = await CourseNetwrok.submitForm(body);
             if (response?.errorCode === 0) {
@@ -88,7 +88,7 @@ const FormOne = ({setApiResponse}) => {
         <React.Fragment>
             <Grid container sx={{ display: "flex", justifyContent: "center", }}>
                 <Grid xs={12} sm={8} md={6} lg={4} padding={"0px"}>
-                    <Card sx={{boxShadow: "none", height: "100%"}}>
+                    <Card sx={{ boxShadow: "none", height: "100%" }}>
                         <CardContent sx={{ p: [0, 2] }}>
                             <Typography
                                 sx={{
@@ -167,8 +167,8 @@ const FormOne = ({setApiResponse}) => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                                {typeSelect ?  <Grid item xs={12}>
-                                    
+                                {typeSelect ? <Grid item xs={12}>
+
                                     <Typography>
                                         {typeSelect === "course" ? "Course :" : "Test Series"}
                                     </Typography>
@@ -198,8 +198,8 @@ const FormOne = ({setApiResponse}) => {
                                             })}
                                         </Select>
                                     </FormControl>
-                                </Grid> : "" }
-                              
+                                </Grid> : ""}
+
 
                             </Grid>
                             <Grid container spacing={2} mt={2}>
@@ -239,7 +239,7 @@ const FormOne = ({setApiResponse}) => {
                                 onClick={handleSubmit}
                             >
                                 {/* <img alt='' src={smssvg} /> */}
-                                Send Message
+                                Submit 
                             </Button>
                         </CardActions>
                     </Card>
