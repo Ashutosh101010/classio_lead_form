@@ -122,13 +122,13 @@ const FormOne = ({ setApiResponse }) => {
                                     <Typography>
                                         First Name :
                                     </Typography>
-                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
+                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
                                     <Typography>
                                         Last Name :
                                     </Typography>
-                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
+                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2} mb={4}>
@@ -136,13 +136,13 @@ const FormOne = ({ setApiResponse }) => {
                                     <Typography>
                                         Phone :
                                     </Typography>
-                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
                                     <Typography>
                                         Email :
                                     </Typography>
-                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
@@ -207,7 +207,7 @@ const FormOne = ({ setApiResponse }) => {
                                     <Typography>
                                         Message :
                                     </Typography>
-                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '100%', height: '90px', fontSize: '16px' }} />
+                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '98%', height: '90px', fontSize: '16px' }} />
                                 </Grid>
                             </Grid>
                             <h3 style={{ color: "red" }}>{error}</h3>
