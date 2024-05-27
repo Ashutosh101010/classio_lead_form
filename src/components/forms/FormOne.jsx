@@ -88,8 +88,8 @@ const FormOne = ({ setApiResponse }) => {
         <React.Fragment>
             <Grid container sx={{ display: "flex", justifyContent: "center", }}>
                 <Grid xs={12} sm={8} md={6} lg={4} padding={"0px"}>
-                    <Card sx={{ boxShadow: "none", height: "100%" }}>
-                        <CardContent sx={{ p: [0, 2] }}>
+                    <Card sx={{ boxShadow: "2px 2px 2px 3px #fff", height: "100%", borderRadius: '15px' }}>
+                        <CardContent sx={{ p: [2, 2] }}>
                             <Typography
                                 sx={{
                                     display: 'flex',
@@ -117,37 +117,37 @@ const FormOne = ({ setApiResponse }) => {
                                 We'd love to hear from you, please drop us a line if you've any
                                 query related to our program and courses.
                             </Typography>
-                            <Grid container spacing={2} mb={4} mt={2}>
+                            <Grid container spacing={2} mb={2} mt={0}>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography>
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
                                         First Name :
                                     </Typography>
-                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
+                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px', position: 'relative' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography>
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
                                         Last Name :
                                     </Typography>
-                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px', position: 'relative', top: '2px' }} />
+                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px', position: 'relative' }} />
                                 </Grid>
                             </Grid>
-                            <Grid container spacing={2} mb={4}>
+                            <Grid container spacing={2} mb={2}>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography>
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
                                         Phone :
                                     </Typography>
-                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography>
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
                                         Email :
                                     </Typography>
-                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '98%', height: mobile ? '45px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }} />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <Typography>
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
                                         Type :
                                     </Typography>
                                     <FormControl fullWidth>
@@ -157,7 +157,7 @@ const FormOne = ({ setApiResponse }) => {
                                             onChange={(e) => setTypeSelect(e.target.value)}
                                             displayEmpty
                                             inputProps={{ 'aria-label': 'Without label' }}
-                                            style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px' }}
+                                            style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }}
                                         >
                                             <MenuItem value="">
                                                 <em>Select Your Type</em>
@@ -168,7 +168,6 @@ const FormOne = ({ setApiResponse }) => {
                                     </FormControl>
                                 </Grid>
                                 {typeSelect ? <Grid item xs={12}>
-
                                     <Typography>
                                         {typeSelect === "course" ? "Course :" : "Test Series"}
                                     </Typography>
@@ -179,7 +178,7 @@ const FormOne = ({ setApiResponse }) => {
                                             onChange={handleChangeCourse}
                                             displayEmpty
                                             inputProps={{ 'aria-label': 'Without label' }}
-                                            style={{ width: '100%', height: mobile ? '45px' : '39px', fontSize: '16px' }}
+                                            style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }}
                                         >
                                             <MenuItem value="">
                                                 <em> {typeSelect === "course" ? "Select Your Course :" : "Select Your Test Series"}</em>
@@ -199,15 +198,13 @@ const FormOne = ({ setApiResponse }) => {
                                         </Select>
                                     </FormControl>
                                 </Grid> : ""}
-
-
                             </Grid>
-                            <Grid container spacing={2} mt={2}>
+                            <Grid container spacing={2} mt={0}>
                                 <Grid item xs={12}>
-                                    <Typography>
-                                        Message :
+                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
+                                        Message
                                     </Typography>
-                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '98%', height: '90px', fontSize: '16px' }} />
+                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '100%', height: '90px', fontSize: '16px' }} />
                                 </Grid>
                             </Grid>
                             <h3 style={{ color: "red" }}>{error}</h3>
@@ -223,14 +220,14 @@ const FormOne = ({ setApiResponse }) => {
                                 sx={{
                                     textTransform: 'none',
                                     background: '#ffd80d',
-                                    fontFamily: 'Inter',
-                                    fontWeight: '600',
+                                    // fontFamily: 'Inter',
+                                    fontWeight: '700',
                                     minHeight: '50px',
-                                    fontSize: '16px',
+                                    fontSize: '20px',
                                     color: '#000',
                                     gap: '10px',
                                     width: ['95%', '87%'],
-                                    borderRadius: '0px',
+                                    borderRadius: '5px',
                                     border: 'none',
                                     '&:hover': {
                                         background: '#bf8c07', // Change the background color on hover
@@ -239,7 +236,7 @@ const FormOne = ({ setApiResponse }) => {
                                 onClick={handleSubmit}
                             >
                                 {/* <img alt='' src={smssvg} /> */}
-                                Submit 
+                                Submit
                             </Button>
                         </CardActions>
                     </Card>
