@@ -1,3 +1,11 @@
 ::-webkit-scrollbar {
-overflow: hidden;
-  }
+  overflow: hidden;
+}
+
+input {
+  text-indent: 10px;
+}
+
+textarea {
+  text-indent: 10px;
+}

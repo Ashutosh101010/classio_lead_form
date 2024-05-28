@@ -97,8 +97,8 @@ const FormOne = ({ setApiResponse }) => {
                                     alignItems: 'center'
                                 }}
                                 fontFamily={'Inter , sans-serif'}
-                                fontSize={['35px', '40px']}
-                                fontWeight={'500'}
+                                fontSize={['35px', '35px']}
+                                fontWeight={'400'}
                                 lineHeight={'60px'}
                             >
                                 Get In Touch
@@ -119,36 +119,36 @@ const FormOne = ({ setApiResponse }) => {
                             </Typography>
                             <Grid container spacing={2} mb={2} mt={0}>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
-                                        First Name :
+                                    <Typography fontSize={'15px'} color={'#000'}>
+                                        First Name
                                     </Typography>
-                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px', position: 'relative' }} />
+                                    <input onChange={(e) => setFirstName(e.target.value)} value={firstName} class="input-field" type='text' name='name' placeholder='Enter Your First Name' style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '30px', fontSize: '1rem', position: 'relative' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
-                                        Last Name :
+                                    <Typography fontSize={'15px'} color={'#000'}>
+                                        Last Name
                                     </Typography>
-                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px', position: 'relative' }} />
+                                    <input onChange={(e) => setLastName(e.target.value)} value={lastName} class="input-field" type='text' name='name' placeholder='Enter Your Last Name' style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '30px', fontSize: '1rem', position: 'relative' }} />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2} mb={2}>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
-                                        Phone :
+                                    <Typography fontSize={'15px'} color={'#000'}>
+                                        Phone
                                     </Typography>
-                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setNumber(e.target.value)} value={number} class="input-field" type='number' name='number' placeholder='Enter Your Phone Number' style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '30px', fontSize: '1rem' }} />
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
-                                        Email :
+                                    <Typography fontSize={'15px'} color={'#000'}>
+                                        Email
                                     </Typography>
-                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }} />
+                                    <input onChange={(e) => setEmailId(e.target.value)} value={emailId} class="input-field" type='email' name='email' placeholder='Enter Your Email' style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '30px', fontSize: '1rem' }} />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
-                                        Type :
+                                    <Typography fontSize={'15px'} color={'#000'}>
+                                        Type
                                     </Typography>
                                     <FormControl fullWidth>
                                         <Select
@@ -157,19 +157,33 @@ const FormOne = ({ setApiResponse }) => {
                                             onChange={(e) => setTypeSelect(e.target.value)}
                                             displayEmpty
                                             inputProps={{ 'aria-label': 'Without label' }}
-                                            style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }}
+                                            style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '35px', fontSize: '1rem' }}
                                         >
-                                            <MenuItem value="">
-                                                <em>Select Your Type</em>
+                                            <MenuItem
+                                                sx={{
+                                                    fontSize: '1rem'
+                                                }}
+                                                value="">
+                                                -- Select Your Type --
                                             </MenuItem>
-                                            <MenuItem value="course">Course</MenuItem>
-                                            <MenuItem value="testSeries">Test-series</MenuItem>
+                                            <MenuItem
+                                                sx={{
+                                                    fontSize: '1rem'
+                                                }}
+                                                value="course">Course</MenuItem>
+                                            <MenuItem
+                                                sx={{
+                                                    fontSize: '1rem'
+                                                }}
+                                                value="testSeries">Test-series</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Grid>
                                 {typeSelect ? <Grid item xs={12}>
-                                    <Typography>
-                                        {typeSelect === "course" ? "Course :" : "Test Series"}
+                                    <Typography
+                                        fontSize={'15px'}
+                                    >
+                                        {typeSelect === "course" ? "Course" : "Test Series"}
                                     </Typography>
                                     <FormControl fullWidth>
                                         <Select
@@ -178,18 +192,22 @@ const FormOne = ({ setApiResponse }) => {
                                             onChange={handleChangeCourse}
                                             displayEmpty
                                             inputProps={{ 'aria-label': 'Without label' }}
-                                            style={{ width: '100%', height: mobile ? '40px' : '39px', fontSize: '16px' }}
+                                            style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: mobile ? '35px' : '35px', fontSize: '1rem' }}
                                         >
-                                            <MenuItem value="">
-                                                <em> {typeSelect === "course" ? "Select Your Course :" : "Select Your Test Series"}</em>
+                                            <MenuItem
+                                                sx={{
+                                                    fontSize: '1rem'
+                                                }} value="">
+                                                {typeSelect === "course" ? "-- Select Your Course --" : "-- Select Your Test Series --"}
                                             </MenuItem>
                                             {coursesData && coursesData.map((filteredCourse, index) => {
                                                 return (
                                                     <MenuItem
-                                                        value={filteredCourse}
-                                                        style={{
+                                                        sx={{
+                                                            fontSize: '1rem',
                                                             margin: '10px'
                                                         }}
+                                                        value={filteredCourse}
                                                     >
                                                         {filteredCourse?.title ? filteredCourse?.title : filteredCourse?.name}
                                                     </MenuItem>
@@ -201,10 +219,10 @@ const FormOne = ({ setApiResponse }) => {
                             </Grid>
                             <Grid container spacing={2} mt={0}>
                                 <Grid item xs={12}>
-                                    <Typography fontSize={'15px'} color={'#000'} fontWeight={'600'}>
+                                    <Typography fontSize={'15px'} color={'#000'}>
                                         Message
                                     </Typography>
-                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '100%', height: '90px', fontSize: '16px' }} />
+                                    <textarea onChange={(e) => setMessage(e.target.value)} value={message} class="input-field" name='message' rows={5} placeholder='Enter Message' style={{ width: '100%',color: '#000', borderWidth: 'thin', borderRadius: '5px', height: '90px', fontSize: '1rem' }} />
                                 </Grid>
                             </Grid>
                             <h3 style={{ color: "red" }}>{error}</h3>
@@ -221,7 +239,7 @@ const FormOne = ({ setApiResponse }) => {
                                     textTransform: 'none',
                                     background: '#ffd80d',
                                     // fontFamily: 'Inter',
-                                    fontWeight: '700',
+                                    fontWeight: '500',
                                     minHeight: '50px',
                                     fontSize: '20px',
                                     color: '#000',
