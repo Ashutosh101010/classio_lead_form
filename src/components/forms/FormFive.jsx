@@ -160,6 +160,8 @@ const FormFive = ({ setApiResponse }) => {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
+                                    class="input-field"
+                                    inputProps={{ 'aria-label': 'Without label' }}
                                     sx={{
                                         background: '#fff', borderRadius: '20px', height: '50px'
                                     }}
@@ -201,7 +203,7 @@ const FormFive = ({ setApiResponse }) => {
                                 }}
                                 onClick={handleSubmit}
                             >
-                                Submit 
+                                Submit
                             </Button>
                         </CardActions>
                     </Card>
