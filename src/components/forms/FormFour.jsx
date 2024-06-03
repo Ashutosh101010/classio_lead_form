@@ -86,7 +86,7 @@ const FormFour = ({ setApiResponse }) => {
 
     return (
         <React.Fragment>
-            <Grid container sx={{ display: "flex", justifyContent: "end", }}>
+            <Grid container sx={{ display: "flex", justifyContent: "center", }}>
                 <Grid xs={12} sm={8} md={6} lg={4} padding={"0px"}>
                     <Card sx={{ maxWidth: 400, background: '#8080801f', borderRadius: '15px', padding: 3 }}>
                         <Box
