@@ -161,7 +161,7 @@ const FormSeven = ({ setApiResponse }) => {
                                 placeholder='Phone No.'
                                 onChange={(e) => setNumber(e.target.value)}
                             />
-                            <TextField
+                            {/* <TextField
                                 id="outlined-required"
                                 InputProps={{
                                     style: { background: '#fff', borderRadius: '20px', height: '50px' }
@@ -171,8 +171,8 @@ const FormSeven = ({ setApiResponse }) => {
                                 type='email'
                                 placeholder='Email'
                                 onChange={(e) => setEmailId(e.target.value)}
-                            />
-                            <TextField
+                            /> */}
+                            {/* <TextField
                                 id="outlined-required"
                                 InputProps={{
                                     style: { background: '#fff', borderRadius: '20px', height: '50px' }
@@ -182,7 +182,7 @@ const FormSeven = ({ setApiResponse }) => {
                                 type='text'
                                 placeholder='Address'
                                 onChange={(e) => setAddress(e.target.value)}
-                            />
+                            /> */}
                             {/* <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select State</InputLabel>
                                 <Select
@@ -230,7 +230,7 @@ const FormSeven = ({ setApiResponse }) => {
                                 </Select>
                             </FormControl> */}
                             <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select Exprience</InputLabel>
+                                <InputLabel id="demo-simple-select-label">Select Course</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
