@@ -15,6 +15,7 @@ const Template = ({ templateId, setFormId }) => {
     const [apiResponse, setApiResponse] = useState(false)
 
     useEffect(() => {
+
         getInstitute();
     }, [])
 
@@ -28,6 +29,8 @@ const Template = ({ templateId, setFormId }) => {
     };
 
     switch (templateId) {
+        case 0:
+            return <></>
         case 1:
             return <>
                 {apiResponse === false ? <FormOne setApiResponse={setApiResponse} /> : <ThankYouPage />}
