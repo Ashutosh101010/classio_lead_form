@@ -7,6 +7,7 @@ import FormFour from "./FormFour";
 import FormFive from "./FormFive";
 import FormSix from "./FormSix";
 import FormSeven from './FormSeven'
+import FormEight from "./FormEight";
 
 const Template = ({ templateId, setFormId }) => {
 
@@ -54,6 +55,10 @@ const Template = ({ templateId, setFormId }) => {
         case 6:
             return <>
                 {apiResponse === false ? <FormSeven setApiResponse={setApiResponse} /> : <ThankYouPage />}
+            </>;
+        case 7:
+            return <>
+                {apiResponse === false ? <FormEight setApiResponse={setApiResponse} /> : <ThankYouPage />}
             </>;
         default:
             return <>
