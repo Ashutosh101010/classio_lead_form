@@ -35,27 +35,35 @@ const FormEight = () => {
     }
 
     const getAllCourses = async () => {
-        const response = await CourseNetwrok.fetchCourses(instId);
-        let templist = [];
-        response.courses.forEach((course) => {
-            if (course.active == true) {
-                templist.push(course);
-            }
-        })
-        setCoursesData(templist);
+        try {
+            const response = await CourseNetwrok.fetchCourses(instId);
+            let templist = [];
+            response.courses.forEach((course) => {
+                if (course.active == true) {
+                    templist.push(course);
+                }
+            })
+            setCoursesData(templist);
+        } catch (error) {
+            console.log(error);
+        }
     };
     const getTestSeries = async () => {
-        const response = await CourseNetwrok.fetchTestSeries(instId);
-        let templist = [];
-        response.testSeriesList.forEach((course) => {
-            if (course.active == true) {
-                templist.push(course);
-            }
-        })
-        setCoursesData(response?.testSeriesList);
+        try {
+            const response = await CourseNetwrok.fetchTestSeries(instId);
+            let templist = [];
+            response.testSeriesList.forEach((course) => {
+                if (course.active == true) {
+                    templist.push(course);
+                }
+            })
+            setCoursesData(response?.testSeriesList);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
-    console.log('Data', firstName, lastName, number, emailId, typeSelect, course, message)
+    // console.log('Data', firstName, lastName, number, emailId, typeSelect, course, message)
 
     const handleSubmit = async () => {
         if (firstName && number && typeSelect && course) {
@@ -85,7 +93,7 @@ const FormEight = () => {
         else {
             setError("All fields Are required");
         }
-    }
+    };
 
     return (
         <div>
