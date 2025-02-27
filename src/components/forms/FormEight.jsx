@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CourseNetwrok from "../authentication/network";
 
-const FormEight = () => {
+const FormEight = ({ setApiResponse }) => {
 
     const queryParam = new URLSearchParams(location.search);
     const instId = queryParam.get("instituteid");
@@ -69,11 +69,13 @@ const FormEight = () => {
         if (firstName && number && typeSelect && course) {
             const body = {
                 "firstName": firstName,
-                "lastName": lastName,
-                "email": emailId,
+                // "lastName": lastName,
+                "lastName": 'last',
+                // "email": emailId,
+                "email": 'aurous',
                 "contact": number,
                 "enquiryType": typeSelect,
-                "contentId": course.id,
+                "contentId": Number(course),
                 "instId": instId,
                 "campaignId": campaignId ? campaignId : metaCampaignId ? metaCampaignId : null
             }
@@ -87,7 +89,16 @@ const FormEight = () => {
                 setTypeSelect("");
                 setCourse("");
                 setMessage("");
-                setError("")
+                setError("");
+                if (window.parent) {
+                    window.parent.postMessage(
+                        {
+                            status: 200, // ✅ Only sending the status
+                        },
+                        "*" // ✅ Ensure this matches the parent domain
+                    );
+                    console.log("✅ Message sent to parent");
+                }
             }
         }
         else {
@@ -145,7 +156,7 @@ const FormEight = () => {
                             >
                                 <input
                                     placeholder='Enter your Mobile Number'
-                                    type='text'
+                                    type='number' name='number' id='number'
                                     value={number}
                                     onChange={(e) => setNumber(e.target.value)}
                                     style={{
@@ -171,6 +182,16 @@ const FormEight = () => {
                                         boxSizing: 'border-box'
                                     }}
                                 />
+                                <p
+                                    style={{
+                                        color: '#fff',
+                                        fontSize: '8px',
+                                        position: 'absolute',
+                                        top: '37%',
+                                        textAlign: 'end',
+                                        width: '24.5%'
+                                    }}
+                                >(Optional)</p>
                             </Box>
                             <Box
                                 py={1}
@@ -188,7 +209,7 @@ const FormEight = () => {
                                     <option
                                         style={{ fontSize: '16px', margin: '10px' }}
                                     >
-                                        Select Course
+                                        Select Class
                                     </option>
                                     {
                                         coursesData.length > 0 && coursesData.map((course, index) => {
@@ -229,7 +250,7 @@ const FormEight = () => {
                                     }
                                 }}
                             >
-                                Book a <span style={{ color: '#ED1B23', paddingLeft: '5px', paddingRight: '5px' }}>Free</span> demo now
+                                Submit Now
                             </Button>
                         </CardActions>
                     </Card>
