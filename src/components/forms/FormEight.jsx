@@ -90,14 +90,12 @@ const FormEight = ({ setApiResponse }) => {
                 setCourse("");
                 setMessage("");
                 setError("");
-                if (window.parent) {
+                if (window.parent !== window) {
+                    console.log("📤 Sending message to parent...");
                     window.parent.postMessage(
-                        {
-                            status: 200, // ✅ Only sending the status
-                        },
-                        "*" // ✅ Ensure this matches the parent domain
+                        { status: 200 },
+                        `https://apre.aurousacademy.com/`
                     );
-                    console.log("✅ Message sent to parent");
                 }
             }
         }
@@ -187,9 +185,10 @@ const FormEight = ({ setApiResponse }) => {
                                         color: '#fff',
                                         fontSize: '8px',
                                         position: 'absolute',
-                                        top: '37%',
+                                        top: '29%',
+                                        left: mobile ? '52%' : '70%',
                                         textAlign: 'end',
-                                        width: '24.5%'
+                                        // width: '24.5%'
                                     }}
                                 >(Optional)</p>
                             </Box>
