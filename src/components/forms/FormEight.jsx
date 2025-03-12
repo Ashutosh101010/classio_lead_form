@@ -90,13 +90,6 @@ const FormEight = ({ setApiResponse }) => {
                 setCourse("");
                 setMessage("");
                 setError("");
-                if (window.parent !== window) {
-                    console.log("📤 Sending message to parent...");
-                    window.parent.postMessage(
-                        { status: 200 },
-                        `https://apre.aurousacademy.com/`
-                    );
-                }
             }
         }
         else {
